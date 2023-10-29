@@ -40,7 +40,7 @@ function changeGrad(fromGrad, toGrad) {
             r: Math.floor(lower.color.r * pctLower + upper.color.r * pctUpper),
             g: Math.floor(lower.color.g * pctLower + upper.color.g * pctUpper),
             b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper),
-            a: Math.floor(lower.color.a * pctLower + upper.color.a * pctUpper)
+            a: (lower.color.a * pctLower + upper.color.a * pctUpper)
         };
         // And returns the rgb code
         return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
@@ -81,7 +81,7 @@ function changeGrad(fromGrad, toGrad) {
 
 function setGreeting() {
     const now = new Date();
-    const hour = Math.floor(Math.random() * 23);
+    const hour = now.getHours();
 
     /*
     5 - 11:59 M
@@ -96,18 +96,6 @@ function setGreeting() {
         // Good Morning,
         document.getElementById("greettitle").innerText = `Good ${greet},`;
         
-        const mornc = [
-            { r: 140, g: 215, b: 239, a: 1 },
-            { r: 234, g: 239, b: 240, a: 1 }
-        ];
-        const afternc = [
-            { r: 239, g: 211, b: 140, a: 1 },
-            { r: 240, g: 238, b: 234, a: 1 }
-        ];
-        const evenc = [
-            { r: 140, g: 215, b: 239, a: 1 },
-            { r: 234, g: 239, b: 240, a: 1 }
-        ];
         const variantGrad = [
             [
                 { r: 140, g: 215, b: 239, a: 1 },
@@ -118,13 +106,20 @@ function setGreeting() {
                 { r: 240, g: 238, b: 234, a: 1 }
             ],
             [
-                { r: 140, g: 215, b: 239, a: 1 },
-                { r: 234, g: 239, b: 240, a: 1 }
+                { r: 228, g: 242, b: 246, a: 0.75 },
+                { r: 234, g: 239, b: 240, a: 0.10 }
             ]
         ];
-        changeGrad(mornc, afternc);
-            
-        //document.getElementById("greetcard").className = greet;
+        changeGrad(variantGrad[greetIdx], variantGrad[idx]);
+
+        document.getElementById("greetweaico").src = `assets/${idx == 2 ? 5 : idx == 1 ? 1 : 6}.png`;
+
+        if (idx == 2) {
+            document.getElementById("appback").className = "darktheme";
+        }
+        else if (greetIdx == 2) {
+            document.getElementById("appback").className = "lighttheme";
+        }
         
         greetIdx = idx;
     }

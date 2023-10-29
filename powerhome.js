@@ -79,6 +79,20 @@ function changeGrad(fromGrad, toGrad) {
     animateGradient();
 };
 
+function addClassToElements(selectors, className) {
+    let query = document.querySelectorAll(selectors);
+    for (var i = 0; i < query.length; i++) {
+        query[i].classList.add(className);
+    }
+}
+
+function removeClassFromElements(selectors, className) {
+    let query = document.querySelectorAll(selectors);
+    for (var i = 0; i < query.length; i++) {
+        query[i].classList.remove(className);
+    }
+}
+
 function setGreeting() {
     const now = new Date();
     const hour = now.getHours();
@@ -116,9 +130,15 @@ function setGreeting() {
 
         if (idx == 2) {
             document.getElementById("appback").className = "darktheme";
+            
+            addClassToElements(".app_item", "darktheme");
+            addClassToElements(".title2", "darktheme");
         }
         else if (greetIdx == 2) {
             document.getElementById("appback").className = "lighttheme";
+            
+            removeClassFromElements(".app_item", "darktheme");
+            removeClassFromElements(".title2", "darktheme");
         }
         
         greetIdx = idx;

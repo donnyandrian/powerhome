@@ -83,36 +83,37 @@ body {
     transition: all 1s ease;
 }
 
-.apps_item:hover {
+.app_item:hover {
     background-color: hsla(0, 0%, 19%, 15%);
 }
 
-.apps_item:active {
+.app_item:active {
     background-color: hsla(0, 0%, 19%, 8%);
 }
 
-.apps_item > a {
+.app_item > a {
     width: 100px;
     height: 100px;
     vertical-align: middle;
 }
 
-.apps_item > a > img {
+.app_item > a > img {
     width: 60px;
     height: 60px;
     margin: 20px;
     object-fit: contain;
-    align: middle;
+    text-align: middle;
+    vertical-align: middle;
 }
 
 .app_item.darktheme {
     background: hsla(0, 0%, 100%, 10%);
 }
 
-.apps_item.darktheme:hover {
+.app_item.darktheme:hover {
     background-color: hsla(0, 0%, 100%, 15%);
 }
 
-.apps_item.darktheme:active {
+.app_item.darktheme:active {
     background-color: hsla(0, 0%, 100%, 8%);
 }

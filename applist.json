@@ -1,0 +1,62 @@
+[
+    {
+      "Name": "Google Classroom",
+      "Link": "https://classroom.google.com/u/4/",
+      "Icon": "https://upload.wikimedia.org/wikipedia/commons/1/19/Google_Classroom_Logo.svg"
+    },
+    {
+        "Name": "Google Docs",
+        "Link": "https://docs.google.com/document/u/4/",
+        "Icon": "https://lh3.googleusercontent.com/Ac9zapU8rN332VMysmJIaTk1Nk-3IGzqCwFS-6PwDFUFpEzEBKPTGWfIFN4BXL3eHP5s1DJP2tyh8NTS8_LjvXHzpkyZC2fu58Ov=h120"
+    },
+    {
+        "Name": "Youtube",
+        "Link": "https://www.youtube.com/",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
+    },
+    {
+        "Name": "Figma",
+        "Link": "https://www.figma.com/",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+    },
+    {
+        "Name": "Canva",
+        "Link": "https://canva.com/",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg"
+    },
+    {
+        "Name": "Google Chat",
+        "Link": "https://mail.google.com/chat/u/4/#onboarding",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/d/de/Google_Chat_icon_%282020%29.svg"
+    },
+    {
+        "Name": "GitHub",
+        "Link": "https://github.com/",
+        "Icon": "https://logodix.com/logo/64439.png"
+    },
+    {
+        "Name": "Microsoft To Do",
+        "Link": "https://to-do.live.com/tasks/today?ru=https%3A%2F%2Fto-do.office.com%2Ftasks%2F",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Microsoft_To-Do_icon.svg"
+    },
+    {
+        "Name": "Google Slides",
+        "Link": "https://docs.google.com/presentation/u/4/",
+        "Icon": "https://lh3.googleusercontent.com/aD5GNhlaU2d70gmSy5ioL1dMSUZN9cHDWPLkIBLhCsJ-BgcGUm-PD6o8XExZcx1i2iZV6PH0P8v3ceg0x7Tzd_OZ5FV0nXs5mX15sgA=h120"
+    },
+    {
+        "Name": "Google Sheets",
+        "Link": "https://docs.google.com/spreadsheets/u/4/",
+        "Icon": "https://lh3.googleusercontent.com/tvQvvubDZ2r6Ou8zxkVzkIvddC1snCCq4xD4dhafjAJhHLDsEvHDEUms9RyVH_g-nI_8yTyeahZshZqwMV0NdHxD-K9v-Zbm4DF2vds=h120"
+    },
+    {
+        "Name": "Quizizz",
+        "Link": "https://quizizz.com/join",
+        "Icon": "https://i.pinimg.com/originals/98/01/80/980180fd83341e63a496a4f98d2bd115.png"
+    },
+    {
+        "Name": "Civitas",
+        "Link": "https://mahasiswa.itbss.civitas.id/dashboard",
+        "Icon": "https://play-lh.googleusercontent.com/3v76r7I4iimxXgUwsj9FkCYcPhxuPFpSQvlig_mPEv3hrKkXUweiADWNm9767mZITPQ"
+    }
+  ]

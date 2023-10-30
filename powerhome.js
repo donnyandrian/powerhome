@@ -11,32 +11,40 @@ function getApps() {
         <div class="app_item_name">GitHub</div>
     </div>
     */
+    
+    fetch('./applist.json').then((response) => response.json()).then(function(json) {
+        console.log(json);
+        let parsed = JSON.parse(JSON.stringify(json));
+        for (let i = 0; i < parsed.length; i++) {
+            const element = parsed[i];
+            
+            const group = document.createElement("div");
+            group.className = "app_item_group";
 
-    const group = document.createElement("div");
-    group.className = "app_item_group";
+            const item = document.createElement("div");
+            item.className = "app_item";
 
-    const item = document.createElement("div");
-    item.className = "app_item";
+            const link = document.createElement("a");
+            link.href = element.Link;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
 
-    const link = document.createElement("a");
-    link.href = "https://github.com/";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
+            const icon = document.createElement("img");
+            icon.src = element.Icon;
 
-    const icon = document.createElement("img");
-    icon.src = "https://logodix.com/logo/64439.png";
+            link.appendChild(icon);
+            item.appendChild(link);
 
-    link.appendChild(icon);
-    item.appendChild(link);
+            const itemName = document.createElement("div");
+            itemName.className = "app_item_name";
+            itemName.innerText = element.Name;
 
-    const itemName = document.createElement("div");
-    itemName.className = "app_item_name";
-    itemName.innerText = "Github 2";
+            group.appendChild(item);
+            group.appendChild(itemName);
 
-    group.appendChild(item);
-    group.appendChild(itemName);
-
-    document.getElementById("apps_flex_list").appendChild(group);
+            document.getElementById("apps_flex_list").appendChild(group);
+        }
+    });
 };
 
 function changeGrad(fromGrad, toGrad) {
@@ -178,7 +186,7 @@ function setGreeting() {
     }
 };
 
-
+getApps();
 
 setGreeting();
 setInterval(setGreeting, 2000);

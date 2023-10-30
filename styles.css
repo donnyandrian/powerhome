@@ -28,6 +28,7 @@ body {
     align-items: flex-start;
     gap: 25px;
     display: inline-flex;
+    min-width: fit-content;
 }
 
 .title {
@@ -45,6 +46,8 @@ body {
     align-items: flex-start;
     gap: 25px;
     display: inline-flex;
+    min-width: fit-content;
+    min-height: 300px;
 }
 
 .title2_group {
@@ -63,6 +66,7 @@ body {
     font-weight: 600;
     line-height: 60.96px;
     transition: all 1s ease;
+    scroll-margin-top: 100px;
 }
 
 .darktheme .title2 {
@@ -77,7 +81,7 @@ body {
 }
 
 .app_item {
-    width: 100px; height: 100px;
+    width: 125px; height: 125px;
     background: hsla(0, 0%, 19%, 10%);
     border-radius: 16px;
     transition: all 250ms ease;
@@ -93,18 +97,41 @@ body {
 }
 
 .app_item > a {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     vertical-align: middle;
 }
 
 .app_item > a > img {
-    width: 60px;
-    height: 60px;
-    margin: 20px;
+    width: 75px;
+    height: 75px;
+    margin: 25px;
     object-fit: contain;
     text-align: middle;
     vertical-align: middle;
+}
+
+.apps_flex {
+    align-self: stretch;
+    justify-content: space-between;
+    gap: 50px;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.app_item_group {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12.50px;
+    display: inline-flex
+}
+
+.app_item_name {
+    text-align: center;
+    font-size: 16px; 
+    line-height: 20.32px;
+    max-width: 125px;
 }
 
 .tooltip .tooltiptext {

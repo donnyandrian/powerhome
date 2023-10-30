@@ -130,15 +130,9 @@ function setGreeting() {
 
         if (idx == 2) {
             document.getElementById("appback").className = "darktheme";
-            
-            addClassToElements(".app_item", "darktheme");
-            addClassToElements(".title2", "darktheme");
         }
         else if (greetIdx == 2) {
             document.getElementById("appback").className = "lighttheme";
-            
-            removeClassFromElements(".app_item", "darktheme");
-            removeClassFromElements(".title2", "darktheme");
         }
         
         greetIdx = idx;

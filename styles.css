@@ -65,7 +65,7 @@ body {
     transition: all 1s ease;
 }
 
-.title2.darktheme {
+.darktheme .title2 {
     color: hsla(200, 100%, 65%, 1);
 }
 
@@ -80,7 +80,8 @@ body {
     width: 100px; height: 100px;
     background: hsla(0, 0%, 19%, 10%);
     border-radius: 16px;
-    transition: all 1s ease;
+    transition: all 250ms ease;
+    position: relative;
 }
 
 .app_item:hover {
@@ -106,14 +107,75 @@ body {
     vertical-align: middle;
 }
 
-.app_item.darktheme {
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #E3E3E3;
+    margin-left: -60px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 250ms ease;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    margin-left: -12px;
+    border-width: 12px;
+    border-style: solid;
+}
+
+.tooltip .tooltiptext.top {
+    bottom: 125%;
+    left: 50%;
+}
+
+.tooltip .tooltiptext.top::after {
+    top: 100%;
+    left: 50%;
+    border-color: #E3E3E3 transparent transparent transparent;
+}
+
+.tooltip .tooltiptext.bottom {
+    top: 125%;
+    left: 50%;
+}
+
+.tooltip .tooltiptext.bottom::after {
+    bottom: 100%;
+    left: 50%;
+    border-color: transparent transparent #E3E3E3 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+    visibility: visible;
+}
+
+.darktheme .app_item {
     background: hsla(0, 0%, 100%, 10%);
 }
 
-.app_item.darktheme:hover {
+.darktheme .app_item:hover {
     background-color: hsla(0, 0%, 100%, 15%);
 }
 
-.app_item.darktheme:active {
+.darktheme .app_item:active {
     background-color: hsla(0, 0%, 100%, 8%);
+}
+
+.darktheme .tooltip .tooltiptext {
+    background-color: #373737;
+}
+
+.darktheme .tooltip .tooltiptext::after {
+    border-color: #373737 transparent transparent transparent;
+}
+
+.darktheme .tooltip .tooltiptext.bottom::after {
+    border-color: transparent transparent #373737 transparent;
 }

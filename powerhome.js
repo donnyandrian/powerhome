@@ -190,3 +190,26 @@ getApps();
 
 setGreeting();
 setInterval(setGreeting, 2000);
+
+$(document).ready(function(event) {
+    // Add smooth scrolling to all links
+    $("a[href^='#']").on('click', function(event) {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+        var offset = 100;
+        var speed = 800;
+        var easing = "easeInOutCubic";
+
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top - offset
+        }, speed, easing, function(){
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+        });
+    });
+})

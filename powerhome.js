@@ -13,7 +13,6 @@ function getApps() {
     */
     
     fetch('./applist.json').then((response) => response.json()).then(function(json) {
-        console.log(json);
         let parsed = JSON.parse(JSON.stringify(json));
         for (let i = 0; i < parsed.length; i++) {
             const element = parsed[i];
@@ -191,25 +190,42 @@ getApps();
 setGreeting();
 setInterval(setGreeting, 2000);
 
+var lastposy = 0;
+
 $(document).ready(function(event) {
     // Add smooth scrolling to all links
     $("a[href^='#']").on('click', function(event) {
         // Prevent default anchor click behavior
         event.preventDefault();
 
+        lastposy = $(document).scrollTop();
+
         // Store hash
         var hash = this.hash;
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+    });
+});
+
+$(window).on('hashchange', function(e) {
+    // Store hash
+    var hash = location.hash;
+    
+    var speed = 1200;
+    var easing = "easeInOutCubic";
+    
+    if (hash == "") {
+        // Using jQuery's animate() method to add smooth page scroll
+        $('html, body').animate({
+            scrollTop: lastposy
+        }, speed, easing);
+    }
+    else {
         var offset = 100;
-        var speed = 800;
-        var easing = "easeInOutCubic";
 
         // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
         $('html, body').animate({
             scrollTop: $(hash).offset().top - offset
-        }, speed, easing, function(){
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-        });
-    });
-})
+        }, speed, easing);
+    }
+});

@@ -230,6 +230,24 @@ $(window).on('hashchange', function(e) {
     }
 });
 
+function activateAnim(elem) {
+    if (elem.classList.contains("deactive")) {
+        elem.classList.replace("deactive", "active");
+    }
+    else {
+        elem.classList.add("active");
+    }
+}
+
+function deactivateAnim(elem, addDeactivateClass = false) {
+    if (elem.classList.contains("active")) {
+        elem.classList.remove("active");
+        if (addDeactivateClass) {
+            elem.classList.add("deactivate");
+        }
+    }
+}
+
 $(window).on('scroll', function(e) {
     var reveals = document.querySelectorAll(".animate.fadein");
 
@@ -239,10 +257,47 @@ $(window).on('scroll', function(e) {
         var elementBottom = reveals[i].getBoundingClientRect().bottom;
         var elementHeight = reveals[i].getBoundingClientRect().height;
 
-        if (elementBottom + 200 <= windowHeight) {
-            reveals[i].classList.add("active");
-        } else {
-            reveals[i].classList.remove("active");
+        var freeSpaceTop = (windowHeight - elementHeight) / 2;
+
+        if (i == 0) {
+            if (reveals.length > 2) {
+                if (reveals[1].classList.contains("active")) {
+                    continue;
+                }
+            }
+
+            if (!(elementBottom < 0 || elementTop - windowHeight >= 0)) {
+                // visible
+                activateAnim(reveals[i]);
+            }
+            else {
+                deactivateAnim(reveals[i]);
+            }
+        }
+        else if (i == reveals.length - 1) {
+            if (elementBottom - 100 <= windowHeight) {
+                activateAnim(reveals[i]);
+            } else {
+                deactivateAnim(reveals[i]);
+            }
+        }
+        else {
+            // elementBottom + elementHeight / 2 - 60 <= windowHeight
+            var deactivated = reveals[i].classList.contains("deactivate");
+            var bottomOffset = deactivated ? 60 : 0;
+
+            if (deactivated && elementBottom - 60 >= freeSpaceTop) {
+                reveals[i].classList.remove("deactivate");
+            }
+
+            if (elementTop - 60 <= freeSpaceTop && elementBottom - bottomOffset >= freeSpaceTop) {
+                activateAnim(reveals[i]);
+                //deactivateAnim(reveals[i - 1]);
+            } else {
+                deactivateAnim(reveals[i], true);
+            }
         }
     }
 });
+
+$(window).trigger('scroll');

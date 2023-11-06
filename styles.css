@@ -54,6 +54,42 @@ body {
     min-height: 300px;
 }
 
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 60px, 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.animate {
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1.2s;
+    -webkit-animation-fill-mode: both;
+}
+
+.animate.fadein {
+    opacity: 0;
+}
+
+.animate.fadein.active {
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
 .title2_group {
     flex: 1 1 0;
     flex-direction: column;
@@ -107,8 +143,8 @@ body {
 }
 
 .app_item > a > img {
-    width: 75px;
-    height: 75px;
+    width: 125px;
+    height: 125px;
     margin: 25px;
     object-fit: contain;
     text-align: middle;

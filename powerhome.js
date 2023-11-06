@@ -229,3 +229,20 @@ $(window).on('hashchange', function(e) {
         }, speed, easing);
     }
 });
+
+$(window).on('scroll', function(e) {
+    var reveals = document.querySelectorAll(".animate.fadein");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = this.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementBottom = reveals[i].getBoundingClientRect().bottom;
+        var elementHeight = reveals[i].getBoundingClientRect().height;
+
+        if (elementBottom + 200 <= windowHeight) {
+            reveals[i].classList.add("active");
+        } else {
+            reveals[i].classList.remove("active");
+        }
+    }
+});

@@ -140,11 +140,12 @@ body {
     width: 125px;
     height: 125px;
     vertical-align: middle;
+    display: inline-block;
 }
 
 .app_item > a > img {
-    width: 125px;
-    height: 125px;
+    width: 75px;
+    height: 75px;
     margin: 25px;
     object-fit: contain;
     text-align: middle;

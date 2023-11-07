@@ -191,6 +191,7 @@ setGreeting();
 setInterval(setGreeting, 2000);
 
 var lastposy = 0;
+var onHashChangedEvent = false;
 
 $(document).ready(function(event) {
     // Add smooth scrolling to all links
@@ -210,6 +211,8 @@ $(document).ready(function(event) {
 $(window).on('hashchange', function(e) {
     // Store hash
     var hash = location.hash;
+
+    onHashChangedEvent = true;
     
     var speed = 1200;
     var easing = "easeInOutCubic";
@@ -218,7 +221,9 @@ $(window).on('hashchange', function(e) {
         // Using jQuery's animate() method to add smooth page scroll
         $('html, body').animate({
             scrollTop: lastposy
-        }, speed, easing);
+        }, speed, easing, function() {
+            onHashChangedEvent = false;
+        });
     }
     else {
         var offset = 100;
@@ -226,11 +231,17 @@ $(window).on('hashchange', function(e) {
         // Using jQuery's animate() method to add smooth page scroll
         $('html, body').animate({
             scrollTop: $(hash).offset().top - offset
-        }, speed, easing);
+        }, speed, easing, function() {
+            onHashChangedEvent = false;
+        });
     }
 });
 
 function activateAnim(elem) {
+    if (onHashChangedEvent) {
+        return;
+    }
+    
     if (elem.classList.contains("deactive")) {
         elem.classList.replace("deactive", "active");
     }
@@ -248,9 +259,14 @@ function deactivateAnim(elem, addDeactivateClass = false) {
     }
 }
 
+jQuery.fn.middle = function () {
+    this.css("top", Math.max(0, (($(window).innerHeight() - $(this)[0].getBoundingClientRect().height) / 2)) + "px");
+    return this;
+}
+
 $(window).on('scroll', function(e) {
     var reveals = document.querySelectorAll(".animate.fadein");
-
+    
     for (var i = 0; i < reveals.length; i++) {
         var windowHeight = this.innerHeight;
         var elementTop = reveals[i].getBoundingClientRect().top;
@@ -282,19 +298,15 @@ $(window).on('scroll', function(e) {
             }
         }
         else {
-            // elementBottom + elementHeight / 2 - 60 <= windowHeight
-            var deactivated = reveals[i].classList.contains("deactivate");
-            var bottomOffset = deactivated ? 60 : 0;
-
-            if (deactivated && elementBottom - 60 >= freeSpaceTop) {
-                reveals[i].classList.remove("deactivate");
-            }
-
-            if (elementTop - 60 <= freeSpaceTop && elementBottom - bottomOffset >= freeSpaceTop) {
-                activateAnim(reveals[i]);
-                //deactivateAnim(reveals[i - 1]);
-            } else {
-                deactivateAnim(reveals[i], true);
+            var parentElem = $(reveals[i]).parent(".detector")[0];
+            if (parentElem != undefined) {
+                var parentRect = parentElem.getBoundingClientRect();
+                if (parentRect.top <= freeSpaceTop && parentRect.bottom >= freeSpaceTop + elementHeight) {
+                    activateAnim(reveals[i]);
+                    $(reveals[i]).middle();
+                } else {
+                    deactivateAnim(reveals[i]);
+                }
             }
         }
     }

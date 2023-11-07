@@ -58,10 +58,12 @@ body {
     from {
         transform: translate3d(0, 60px, 0);
         opacity: 0;
+        visibility: hidden;
     }
     to {
         transform: translate3d(0, 0, 0);
         opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -69,10 +71,12 @@ body {
     from {
         transform: translate3d(0, 60px, 0);
         opacity: 0;
+        visibility: hidden;
     }
     to {
         transform: translate3d(0, 0, 0);
         opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -80,10 +84,12 @@ body {
     from {
         transform: translate3d(0, 0, 0);
         opacity: 1;
+        visibility: visible;
     }
     to {
         transform: translate3d(0, 60px, 0);
         opacity: 0;
+        visibility: hidden;
     }
 }
 
@@ -91,10 +97,12 @@ body {
     from {
         transform: translate3d(0, 0, 0);
         opacity: 1;
+        visibility: visible;
     }
     to {
         transform: translate3d(0, 60px, 0);
         opacity: 0;
+        visibility: hidden;
     }
 }
 
@@ -113,6 +121,14 @@ body {
 .animate.fadein.active {
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
+}
+
+.detector {
+    padding: 600px 0;
+}
+
+.detector .animate {
+    position: fixed;
 }
 
 .title2_group {

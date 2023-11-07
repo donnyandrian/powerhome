@@ -203,8 +203,13 @@ $(document).ready(function(event) {
 
         // Store hash
         var hash = this.hash;
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
+
+        if (window.location.hash == hash) {
+            $(window).trigger('hashchange');
+        } else {
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+        }
     });
 });
 
@@ -217,31 +222,25 @@ $(window).on('hashchange', function(e) {
     var speed = 1200;
     var easing = "easeInOutCubic";
     
-    if (hash == "") {
-        // Using jQuery's animate() method to add smooth page scroll
-        $('html, body').animate({
-            scrollTop: lastposy
-        }, speed, easing, function() {
-            onHashChangedEvent = false;
-        });
-    }
-    else {
+    var scrollToY = lastposy;
+    if (hash != "") {
         var offset = 100;
-
-        // Using jQuery's animate() method to add smooth page scroll
-        $('html, body').animate({
-            scrollTop: $(hash).offset().top - offset
-        }, speed, easing, function() {
-            onHashChangedEvent = false;
-        });
+        scrollToY = $(hash).offset().top - offset;
     }
+
+    // Using jQuery's animate() method to add smooth page scroll
+    $('html, body').animate({
+        scrollTop: scrollToY
+    }, speed, easing, function() {
+        onHashChangedEvent = false;
+    });
 });
 
 function activateAnim(elem) {
     if (onHashChangedEvent) {
         return;
     }
-    
+
     if (elem.classList.contains("deactive")) {
         elem.classList.replace("deactive", "active");
     }

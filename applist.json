@@ -58,5 +58,15 @@
         "Name": "Civitas",
         "Link": "https://mahasiswa.itbss.civitas.id/dashboard",
         "Icon": "https://play-lh.googleusercontent.com/3v76r7I4iimxXgUwsj9FkCYcPhxuPFpSQvlig_mPEv3hrKkXUweiADWNm9767mZITPQ"
-    }
+    },
+    {
+        "Name": "Gmail",
+        "Link": "https://mail.google.com/mail/u/4/#inbox",
+        "Icon": "https://asset.brandfetch.io/id5o3EIREg/id6PVBBFQj.svg"
+    },
+    {
+        "Name": "Programiz C++",
+        "Link": "https://www.programiz.com/cpp-programming/online-compiler/",
+        "Icon": "https://asset.brandfetch.io/idEv3rmw3p/idjtxV4gc_.svg"
+    },
   ]

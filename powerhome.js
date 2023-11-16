@@ -312,3 +312,15 @@ $(window).on('scroll', function(e) {
 });
 
 $(window).trigger('scroll');
+
+function getWeather() {
+    fetch('https://api.weatherapi.com/v1/current.json?key=072b72ea5a2b4390b0a121419230711&q=Sungai%20Raya').then((response) => response.json()).then(function(json) {
+        let parsed = JSON.parse(JSON.stringify(json));
+
+        let loc = `${parsed.location.name}, ${parsed.location.region}, ${parsed.location.country}`;
+
+        document.getElementById("weather_loc").innerText = loc;
+    });
+};
+
+getWeather();

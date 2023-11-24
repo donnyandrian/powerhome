@@ -68,5 +68,15 @@
         "Name": "Programiz C++",
         "Link": "https://www.programiz.com/cpp-programming/online-compiler/",
         "Icon": "https://asset.brandfetch.io/idEv3rmw3p/idjtxV4gc_.svg"
+    },
+    {
+        "Name": "Google Drive",
+        "Link": "https://drive.google.com/drive/u/4/my-drive",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg"
+    },
+    {
+        "Name": "Asana",
+        "Link": "https://app.asana.com/0/1205976704208128/1205976704208128",
+        "Icon": "https://asset.brandfetch.io/idxPi2Evsk/idxxtwI5Gl.jpeg"
     }
   ]

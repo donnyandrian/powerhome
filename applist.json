@@ -78,5 +78,15 @@
         "Name": "Asana",
         "Link": "https://app.asana.com/0/1205976704208128/1205976704208128",
         "Icon": "https://asset.brandfetch.io/idxPi2Evsk/idxxtwI5Gl.jpeg"
+    },
+    {
+        "Name": "Blender - Colab",
+        "Link": "https://colab.research.google.com/drive/1sb_3oIYzdNjcGs9yXMHulnKr_f9AQ9r7?usp=sharing",
+        "Icon": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg"
+    },
+    {
+        "Name": "Image Diffchecker",
+        "Link": "https://www.diffchecker.com/image-compare/",
+        "Icon": "https://www.diffchecker.com/static/images/new/diffchecker.svg"
     }
   ]

@@ -325,3 +325,12 @@ body {
 .darktheme .tooltip .tooltiptext.bottom::after {
     border-color: transparent transparent #373737 transparent;
 }
+
+#quote_of_page {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#quote_of_page.fadeIn {
+    opacity: 1;
+}

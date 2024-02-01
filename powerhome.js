@@ -367,4 +367,45 @@ function getWeather() {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 };
 
+function specialLast() {
+    const last = document.getElementById("end_of_page_section");
+
+    let quoteID = null;
+    
+    let lastClassState = last.classList.contains('active');
+    const classObserver = new MutationObserver((mutations) => {
+        mutations.forEach(mu => {
+            if (mu.type === 'attributes' && mu.attributeName === 'class') {
+                let currentClassState = mu.target.classList.contains('active');
+                if(lastClassState !== currentClassState) {
+                    lastClassState = currentClassState;
+                    if(currentClassState) {
+                        console.log("class was added");
+
+                        if (quoteID !== null) {
+                            clearTimeout(quoteID);
+                            quoteID = null;
+                        }
+                        quoteID = setTimeout(() => {
+                            document.getElementById("quote_of_page").classList.add("fadeIn");
+                        }, 2000);
+                    }
+                    else {
+                        console.log("class was removed");
+
+                        if (quoteID !== null) {
+                            clearTimeout(quoteID);
+                            quoteID = null;
+                        }
+
+                        document.getElementById("quote_of_page").classList.remove("fadeIn");
+                    }
+                }
+            }
+        });
+    });
+    classObserver.observe(last, {attributes: true});
+}
+
 //getWeather();
+specialLast();

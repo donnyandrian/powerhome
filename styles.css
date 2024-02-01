@@ -23,16 +23,28 @@ body {
     color: hsl(0, 0%, 90%);
 }
 
-.Morning {
-    align-self: stretch;
+#greeting_hero {
+    align-self: stretch; 
     padding: 50px;
-    background: linear-gradient(87deg, #8CD7EF 0%, #EAEFF0 93%);
     border-radius: 16px;
+    overflow: hidden;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 25px;
     display: inline-flex;
     min-width: fit-content;
+    min-height: 230px;
+    position: relative;
+}
+
+#greeting_hero > #greeting_hero_overlay {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(87deg, #B4C5CA 0%, rgba(234.12, 238.68, 240.12, 0) 93%)
 }
 
 .title {
@@ -157,8 +169,33 @@ body {
 .subtitle2 {
     align-self: stretch;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 30.48px;
+    display: flex;
+    flex-direction: row;
+    white-space: pre;
+}
+
+.subtitle3 {
+    align-self: stretch;
+    font-weight: 200;
+}
+
+.subtitle4 {
+    align-self: stretch;
+    font-size: 24px;
+    font-weight: 200;
+    display: flex;
+    flex-direction: row;
+    white-space: pre;
+}
+
+.accenttext {
+    color: #1973C1;
+}
+
+.darktheme .accenttext {
+    color: hsla(200, 100%, 65%, 1);
 }
 
 .app_item {

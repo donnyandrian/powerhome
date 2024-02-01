@@ -29,6 +29,8 @@ function getApps() {
             link.rel = "noopener noreferrer";
 
             const icon = document.createElement("img");
+            let colorScheme = greetIdx == 2 ? "dark" : "light";
+            icon.style.colorScheme = colorScheme;
             icon.src = element.Icon;
 
             link.appendChild(icon);
@@ -49,7 +51,7 @@ function getApps() {
 function changeGrad(fromGrad, toGrad) {
     let transitionTime = 1000           // <-- 100 ms - time our animation will last
     let angle = 87;                    // <-- angle of gradient
-    let element = 'greetcard'; // <-- id of our button
+    let element = 'greeting_hero_overlay'; // <-- id of our button
     let intervalFrame;                          // <-- stores the interval frame
     let currentPct = 0;                         // <-- current percentage through the animation
     let elapsed = 0;                            // <-- number of frames which have ellapsed 
@@ -158,26 +160,26 @@ function setGreeting() {
         
         const variantGrad = [
             [
-                { r: 140, g: 215, b: 239, a: 1 },
-                { r: 234, g: 239, b: 240, a: 1 }
+                { r: 180, g: 197, b: 202, a: 1 },
+                { r: 234, g: 239, b: 240, a: 0 }
             ],
             [
-                { r: 239, g: 211, b: 140, a: 1 },
-                { r: 240, g: 238, b: 234, a: 1 }
+                { r: 226, g: 206, b: 154, a: 1 },
+                { r: 240, g: 238, b: 234, a: 0 }
             ],
             [
-                { r: 228, g: 242, b: 246, a: 0.75 },
-                { r: 234, g: 239, b: 240, a: 0.10 }
+                { r: 160, g: 177, b: 204, a: 1 },
+                { r: 234, g: 237, b: 240, a: 0.10 }
             ]
         ];
         changeGrad(variantGrad[greetIdx], variantGrad[idx]);
-
-        document.getElementById("greetweaico").src = `assets/${idx == 2 ? 5 : idx == 1 ? 1 : 6}.png`;
-
+        
+        document.getElementById("greeting_hero").style.backgroundImage = `url('assets/${idx == 2 ? "night" : idx == 1 ? "afternoon" : "morning"}.png')`;
+        
         if (idx == 2) {
             document.getElementById("appback").className = "darktheme";
         }
-        else if (greetIdx == 2) {
+        else {
             document.getElementById("appback").className = "lighttheme";
         }
         
@@ -313,14 +315,56 @@ $(window).on('scroll', function(e) {
 
 $(window).trigger('scroll');
 
-function getWeather() {
-    fetch('https://api.weatherapi.com/v1/current.json?key=072b72ea5a2b4390b0a121419230711&q=Sungai%20Raya').then((response) => response.json()).then(function(json) {
+function changeText(elemID, newText) {
+    var elem = $(document.getElementById(elemID));
+
+    elem.fadeOut(300, function() {
+        elem.contents()[0].nodeValue = newText;
+        console.log(newText);
+        elem.fadeIn(300);
+    });
+}
+
+function getWeatherInfo(latitude, longitude) {
+    let target = 'https://api.weatherapi.com/v1/current.json?key=072b72ea5a2b4390b0a121419230711&q=';
+    
+    if (latitude != undefined && longitude != undefined) {
+        target += `${latitude},${longitude}`;
+    }
+    else {
+        target += "Sungai%20Raya";
+    }
+    
+    fetch(target).then((response) => response.json()).then(function(json) {
         let parsed = JSON.parse(JSON.stringify(json));
 
         let loc = `${parsed.location.name}, ${parsed.location.region}, ${parsed.location.country}`;
 
-        document.getElementById("weather_loc").innerText = loc;
+        let last_upt = new Date(0);
+        last_upt.setUTCSeconds(parsed.current.last_updated_epoch);
+
+        // document.getElementById("weather_loc").innerText = loc;
+        changeText("weather_loc", loc);
+        changeText("weather_temp", `${parsed.current.temp_c}°C`);
+        changeText("weather_feel", `${parsed.current.feelslike_c}°C`);
+        changeText("weather_cond", `${parsed.current.condition.text}`);
+        changeText("weather_last_updated_info", `Retrieved on `);
+        changeText("weather_last_updated", `${new Intl.DateTimeFormat("en-US", {weekday: "long", year: "numeric", month: "long", day: "2-digit", hour12: false, hour: "2-digit", minute: "2-digit"}).format(last_upt)}`);
     });
+}
+
+function getWeather() {
+    const successCallback = (position) => {
+        let coordsInfo = position.coords;
+        getWeatherInfo(coordsInfo.latitude, coordsInfo.longitude);
+    };
+    
+    const errorCallback = (error) => {
+        console.log(error);
+        getWeatherInfo();
+    };
+
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 };
 
-getWeather();
+//getWeather();

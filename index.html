@@ -19,13 +19,14 @@
     flex-direction: column; justify-content: flex-start;
     align-items: flex-start; gap: 150px;
     display: inline-flex">
-        <div class="Morning" id="greetcard">
-            <div style="flex: 1 1 0">
+        <div id="greeting_hero">
+            <div style="flex: 1 1 0; z-index: 1;">
                 <span class="title" id="greettitle">Good Morning,</span><br/>
                 <span class="title" style="text-decoration: underline;">Donny Andrian</span>
             </div>
-            <img id="greetweaico" style="height: 231px" src="assets/6.png" />
+            <div id="greeting_hero_overlay"></div>
         </div>
+
         <div class="content_group animate fadein">
             <div class="title2_group">
                 <div class="title2">Quick Apps</div>
@@ -79,10 +80,11 @@
             <div class="content_group animate fadein">
                 <div class="title2_group">
                     <div class="title2">Weather</div>
-                    <div class="subtitle2" id="weather_loc">Sungai Raya</div>
-                    <div class="subtitle2" id="weather_temp">Temperature: 0</div>
-                    <div class="subtitle2" id="weather_feel">Feels like: 0</div>
-                    <div class="subtitle2" id="weather_cond">Condition: Cloudy</div>
+                    <div class="subtitle2" id="weather_loc">Gathering Location Information...</div>
+                    <div class="subtitle2">Temperature: <div class="subtitle3" id="weather_temp"> ...</div></div>
+                    <div class="subtitle2">Feels like: <div class="subtitle3" id="weather_feel"> ...</div></div>
+                    <div class="subtitle2">Condition: <div class="subtitle3" id="weather_cond"> ...</div></div>
+                    <div class="subtitle2" id="weather_last_updated_info">Retrieving weather information <div class="subtitle3" id="weather_last_updated">...</div></div>
                 </div>
             </div>
         </div>
@@ -95,9 +97,31 @@
             </div>
         </div>
         <div class="content_group animate fadein">
-            <div class="title2_group">
-                <div class="title2">Your Apps</div>
-                <div class="subtitle2">Let's be productive with these apps!</div>
+            <div class="title2_group" style="padding-bottom: 200px;">
+                <div class="title2">You have reached the end :)</div>
+                <div class="subtitle4">
+                    <span>This page was made by </span>
+                    <span class="accenttext">Donny Andrian</span>
+                    <span> with full effort and 💙</span>
+                </div>
+                <div class="subtitle4" style="text-align: center; flex-direction: column;">
+                    <span><br/><br/><br/>"If you can't overcome it, just let it become history. Change the way it works, make yourself better than history."</span>
+                    <span>February 2024</span>
+                </div>
+                <div class="apps_flex" style="justify-content: center;">
+                    <div class="app_item tooltip">
+                        <a href="https://github.com/donnyandrian" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/github.svg" />
+                        </a>
+                        <span class="tooltiptext bottom">Github/donnyandrian</span>
+                    </div>
+                    <div class="app_item tooltip">
+                        <a href="https://github.com/xellanix" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/github.svg" />
+                        </a>
+                        <span class="tooltiptext bottom">Github/xellanix</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

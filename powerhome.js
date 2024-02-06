@@ -173,7 +173,7 @@ function setGreeting() {
             ]
         ];
         changeGrad(variantGrad[greetIdx], variantGrad[idx]);
-        
+        console.log(idx);
         document.getElementById("greeting_hero").style.backgroundImage = `url('assets/${idx == 2 ? "night" : idx == 1 ? "afternoon" : "morning"}.png')`;
         
         if (idx == 2) {

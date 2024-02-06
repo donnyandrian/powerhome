@@ -35,6 +35,7 @@ body {
     min-width: fit-content;
     min-height: 230px;
     position: relative;
+    background-image: url('assets/morning.png');
 }
 
 #greeting_hero > #greeting_hero_overlay {
